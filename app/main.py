@@ -7,13 +7,13 @@ from .dependencies import get_query_token, get_token_header
 from .internal import admin
 from .routers import items, users
 
-from .model.user import user
+from .model.user import Base
 from .schemas.user import UserResponse
 from .database.settings import SessionLocal, engine
 from .database.connection import get_db
-from .controller import get_item
+from .controller.user import get_item
 
-user.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 

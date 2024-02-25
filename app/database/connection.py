@@ -1,4 +1,4 @@
-from . import SessionLocal
+from .settings import SessionLocal
 
 def get_db():
     db = SessionLocal()
