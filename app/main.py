@@ -17,7 +17,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-app = FastAPI(dependencies=[Depends(get_query_token)])
+# app = FastAPI(dependencies=[Depends(get_query_token)])
 
 
 app.include_router(users.router)
@@ -36,8 +36,9 @@ async def root():
     return {"message": "Hello Bigger Applications!"}
 
 @app.get("/userrr", response_model=UserResponse)
-def read_item(item_id: int, db: Session = Depends(get_db)):
-    item = get_item(db, item_id)
+# def read_item(item_id: int, db: Session = Depends(get_db)):
+def read_item(item_id: int):
+    item = get_item(item_id)
     if item is None:
         raise HTTPException(status_code=404, detail="Item not found")
     return item

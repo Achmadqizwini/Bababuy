@@ -2,9 +2,12 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
+fake_user_db = {"animal": "beluga", "gender": "male"}
+
+
 @router.get("/users/", tags=["users"])
 async def read_users():
-    return [{"username: " "Rick"}, {"username": "Morty"}]
+    return fake_user_db
 
 @router.get("/users/me", tags=["users"])
 async def read_users_me():
